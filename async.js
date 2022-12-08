@@ -5,3 +5,7 @@ export function delay(t) {
 export function delayReject(t) {
     return new Promise((_, reject) => setTimeout(reject, t))
 }
+
+export function withTimeout(promise, t) {
+    return Promise.race([promise, delayReject(t)])
+}
